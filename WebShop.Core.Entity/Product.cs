@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace WebShop.Core.Entity
 {
@@ -10,5 +11,6 @@ namespace WebShop.Core.Entity
         public int Stock { get; set; }
         public DateTime ReleaseDate { get; set; }
         public string Console { get; set; }
+        public List<Order> Orders { get; set; }
     }
 }
