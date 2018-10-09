@@ -33,6 +33,13 @@ namespace WebShop.Core.Services.Implementation
             return _customRepo.ReadCustomer().ToList();
         }
 
+        public List<Customer> GetCustomerById(int idCustomer)
+        {
+            var list = _customRepo.ReadCustomer();
+            var customer = list.Where(c => c.Id.Equals(idCustomer));
+            return customer.ToList();
+        }
+
         public Customer UpdateCustomer(Customer customerToUpdate)
         {
             var customer = _customRepo.ReadCustomerByID(customerToUpdate.Id);

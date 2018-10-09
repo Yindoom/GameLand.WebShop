@@ -20,10 +20,6 @@ namespace Infrastructure.Data.Repositories
 
         public Customer CreateCustomer(Customer customer)
         {
-           if(customer.Orders != null)
-            {
-                _ctx.Attach(customer.Orders);
-            }
             var customer2Add = _ctx.Customers.Add(customer).Entity;
             _ctx.SaveChanges();
             return customer2Add;
@@ -49,8 +45,7 @@ namespace Infrastructure.Data.Repositories
 
         public Customer UpdateCustomer(Customer customerToUpdate)
         {
-            _ctx.Attach(customerToUpdate).State = EntityState.Modified;
-            _ctx.Entry(customerToUpdate).Reference(c => c.Orders).IsModified = true;
+            var uptade = _ctx.Customers.Update(customerToUpdate).Entity;
             _ctx.SaveChanges();
 
             return customerToUpdate;

@@ -11,6 +11,7 @@ namespace WebShop.Core.Service
         List<Customer> GetAllCustomers();
         Customer UpdateCustomer(Customer customerToUpdate);
         Customer DeleteCustomer(int idCustomer);
+        List<Customer> GetCustomerById(int idCustomer);
 
     }
 }

@@ -14,7 +14,5 @@ namespace WebShop.Core.Service
         Product SellOneProduct(int i);
         Product AddToStock(int id, int stock);
         Product DeleteProduct(int idProduct);
-
-
     }
 }
