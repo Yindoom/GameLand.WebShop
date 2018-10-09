@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using WebShop.Core.Domain;
 using WebShop.Core.Entity;
 using WebShop.Core.Service;
 
@@ -8,24 +10,38 @@ namespace WebShop.Core.Services.Implementation
 {
     public class CustomerService : ICustomerService
     {
+
+        private readonly ICustomerRepository _customRepo;
+
+        public CustomerService(ICustomerRepository customRepo)
+        {
+            _customRepo = customRepo;
+        }
+
         public Customer CreateCustomer(Customer customer)
         {
-            throw new NotImplementedException();
+            return _customRepo.CreateCustomer(customer);
         }
 
         public Customer DeleteCustomer(int idCustomer)
         {
-            throw new NotImplementedException();
+            return _customRepo.DeleteCustomer(idCustomer);
         }
 
         public List<Customer> GetAllCustomers()
         {
-            throw new NotImplementedException();
+            return _customRepo.ReadCustomer().ToList();
         }
 
         public Customer UpdateCustomer(Customer customerToUpdate)
         {
-            throw new NotImplementedException();
+            var customer = _customRepo.ReadCustomerByID(customerToUpdate.Id);
+            customer.Name = customerToUpdate.Name;
+            customer.Email = customerToUpdate.Email;
+            customer.Address = customerToUpdate.Address;
+            customer.PreferredConsole = customerToUpdate.PreferredConsole;
+            customer.Orders = customerToUpdate.Orders;
+            return customer;
         }
     }
 }
