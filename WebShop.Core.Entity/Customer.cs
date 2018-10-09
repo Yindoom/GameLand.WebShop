@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace WebShop.Core.Entity
 {
     public class Customer
@@ -7,5 +9,6 @@ namespace WebShop.Core.Entity
         public string Email { get; set; }
         public string Address { get; set; }
         public string PreferredConsole { get; set; }
+        public List<Order> Orders { get; set; }
     }
 }

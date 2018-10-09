@@ -6,7 +6,9 @@
 *.user
 *.userosscache
 *.sln.docstates
-
+bin
+obj
+packages
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -259,6 +261,7 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+*.json
 GameLand.WebShop/obj/project.assets.json
 GameLand.WebShop/obj/Debug/netcoreapp2.1/GameLand.WebShop.AssemblyInfo.cs
 GameLand.WebShop/obj/GameLand.WebShop.csproj.nuget.g.props
