@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Data;
+using Infrastructure.Data.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -7,6 +8,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using WebShop.Core.Domain;
+using WebShop.Core.Service;
+using WebShop.Core.Services.Implementation;
 
 namespace GameLand.WebShop
 {
@@ -34,7 +38,13 @@ namespace GameLand.WebShop
 
             services.AddDbContext<WebShopDbContext>(
                 opt => opt.UseSqlite("Data Source=WebShopDb"));
-
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+ 
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<ICustomerService, CustomerService>(); 
+            
+            
             services.BuildServiceProvider();
         }
 
