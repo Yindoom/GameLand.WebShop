@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
@@ -58,24 +58,12 @@ namespace WebShop.Core.Services.Implementation
 
         public Product DeleteProduct(int idProduct)
         {
-<<<<<<< HEAD
-            throw new NotImplementedException();
-=======
             var deleted = _productRepo.ReadById(idProduct);
             return _productRepo.DeleteProduct(deleted);
->>>>>>> TestService
         }
 
         public List<Product> GetAllProducts()
         {
-<<<<<<< HEAD
-            throw new NotImplementedException();
-        }
-
-        public Product UpdateProduct(Product productToUpdate)
-        {
-            throw new NotImplementedException();
-=======
             return _productRepo.ReadProducts().ToList();
         }
 
@@ -100,7 +88,6 @@ namespace WebShop.Core.Services.Implementation
             {
                 throw new InvalidDataException("Product Id does not exist.");
             }
->>>>>>> TestService
         }
     }
 }
