@@ -265,3 +265,4 @@ __pycache__/
 GameLand.WebShop/obj/project.assets.json
 GameLand.WebShop/obj/Debug/netcoreapp2.1/GameLand.WebShop.AssemblyInfo.cs
 GameLand.WebShop/obj/GameLand.WebShop.csproj.nuget.g.props
+Infrastructure.Data/Infrastructure.Data.csproj
