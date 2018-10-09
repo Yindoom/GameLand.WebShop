@@ -13,6 +13,11 @@ namespace Infrastructure.Data.Repositories
 
         readonly private WebShopDbContext _ctx;
 
+        public CustomerRepository(WebShopDbContext ctx)
+        {
+            _ctx = ctx;
+        }
+
         public Customer CreateCustomer(Customer customer)
         {
            if(customer.Orders != null)
