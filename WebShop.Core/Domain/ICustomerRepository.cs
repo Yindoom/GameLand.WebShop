@@ -7,7 +7,6 @@ namespace WebShop.Core.Domain
 {
     public interface ICustomerRepository
     {
-
         Customer ReadCustomerByID(int id);
         Customer CreateCustomer(Customer customer);
         IEnumerable<Customer> ReadCustomer();

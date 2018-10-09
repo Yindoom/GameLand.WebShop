@@ -11,7 +11,5 @@ namespace WebShop.Core.Service
         List<Product> GetAllProducts();
         Product UpdateProduct(Product productToUpdate);
         Product DeleteProduct(int idProduct);
-
-
     }
 }
