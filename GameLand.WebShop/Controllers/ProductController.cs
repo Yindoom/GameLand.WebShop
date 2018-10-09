@@ -19,40 +19,40 @@ namespace GameLand.WebShop.Controllers
             _productService = productService;
         }
 
-        // GET api/customers
+        // GET api/products
         [HttpGet]
-        public ActionResult<IEnumerable<Order>> Get()
+        public ActionResult<IEnumerable<Product>> Get()
         {
-            return _customService.GetAllCustomers();
+            return _productService.GetAllProducts();
         }
 
-        // GET api/customers/5
+        // GET api/products/5
         [HttpGet("{id}")]
-        public ActionResult<IEnumerable<Order>> Get(int id)
+        public ActionResult<IEnumerable<Product>> Get(int id)
         {
-            return _customService.GetCustomerById(id);
+            return _productService.;
         }
 
-        // POST api/customers
+        // POST api/products
         [HttpPost]
-        public ActionResult<Order> Post([FromBody] Order customer)
+        public ActionResult<Product> Post([FromBody] Product product)
         {
-            return _customService.CreateCustomer(customer);
+            return _productService.CreateProduct(product);
             
         }
 
-        // PUT api/customers/5
+        // PUT api/products/5
         [HttpPut("{id}")]
-        public ActionResult<Order> Put(int id, [FromBody] Order customer)
+        public ActionResult<Product> Put(int id, [FromBody] Product product)
         {
-            return _customService.UpdateCustomer(customer);
+            return _productService.UpdateProduct(product);
         }
 
-        // DELETE api/customers/5
+        // DELETE api/products/5
         [HttpDelete("{id}")]
-        public ActionResult<Order> Delete(int id)
+        public ActionResult<Product> Delete(int id)
         {
-            return _customService.DeleteCustomer(id);
+            return _productService.DeleteProduct(id);
         }
     }
 }

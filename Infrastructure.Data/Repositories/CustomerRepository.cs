@@ -20,10 +20,6 @@ namespace Infrastructure.Data.Repositories
 
         public Customer CreateCustomer(Customer customer)
         {
-           if(customer.Orders != null)
-            {
-                _ctx.Attach(customer.Orders);
-            }
             var customer2Add = _ctx.Customers.Add(customer).Entity;
             _ctx.SaveChanges();
             return customer2Add;
