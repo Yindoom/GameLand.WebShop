@@ -12,6 +12,10 @@ namespace WebShop.Core.Services.Implementation
 
         private readonly IOrderRepository _orderRepo;
 
+        public OrderService(IOrderRepository orderRepo)
+        {
+            _orderRepo = orderRepo;
+        }
         public Order CreateOrders(Order order)
         {
             return _orderRepo.CreateOrder(order);
@@ -25,6 +29,13 @@ namespace WebShop.Core.Services.Implementation
         public List<Order> GetAllOrders()
         {
             return _orderRepo.ReadOrder().ToList();
+        }
+
+        public List<Order> GetOrderById(int idOrder)
+        {
+            var list = _orderRepo.ReadOrder();
+            var order = list.Where(o => o.Id.Equals(idOrder));
+            return order.ToList();
         }
 
         public Order UpdateOrders(Order orderToUpdate)
