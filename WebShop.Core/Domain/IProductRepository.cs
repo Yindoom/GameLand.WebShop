@@ -9,8 +9,9 @@ namespace WebShop.Core.Domain
     {
 
         Product CreateProduct(Product product);
-        Product ReadProduct(int id);
+        IEnumerable<Product> ReadProducts(Filter filter = null);
+        Product ReadById(int id);
         Product UpdateProduct(Product productToUpdate);
-        Product DeleteProduct(int idProduct);
+        Product DeleteProduct(Product delProduct);
     }
 }
