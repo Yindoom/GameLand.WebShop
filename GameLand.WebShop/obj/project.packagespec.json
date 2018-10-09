@@ -14,17 +14,7 @@
     ],
     "frameworks": {
       "netcoreapp2.1": {
-        "projectReferences": {
-          "C:\\Users\\Yindo\\Desktop\\CSharp\\GameLand.WebShop\\Infrastructure.Data\\Infrastructure.Data.csproj": {
-            "projectPath": "C:\\Users\\Yindo\\Desktop\\CSharp\\GameLand.WebShop\\Infrastructure.Data\\Infrastructure.Data.csproj"
-          },
-          "C:\\Users\\Yindo\\Desktop\\CSharp\\GameLand.WebShop\\WebShop.Core.Entity\\WebShop.Core.Entity.csproj": {
-            "projectPath": "C:\\Users\\Yindo\\Desktop\\CSharp\\GameLand.WebShop\\WebShop.Core.Entity\\WebShop.Core.Entity.csproj"
-          },
-          "C:\\Users\\Yindo\\Desktop\\CSharp\\GameLand.WebShop\\WebShop.Core\\WebShop.Core.csproj": {
-            "projectPath": "C:\\Users\\Yindo\\Desktop\\CSharp\\GameLand.WebShop\\WebShop.Core\\WebShop.Core.csproj"
-          }
-        }
+        "projectReferences": {}
       }
     },
     "warningProperties": {
@@ -41,14 +31,6 @@
           "target": "Package",
           "version": "[2.1.1, )",
           "autoReferenced": true
-        },
-        "Microsoft.EntityFrameworkCore.SqlServer": {
-          "target": "Package",
-          "version": "[2.1.4, )"
-        },
-        "Microsoft.Extensions.DependencyInjection": {
-          "target": "Package",
-          "version": "[2.1.1, )"
         },
         "Microsoft.NETCore.App": {
           "suppressParent": "All",
