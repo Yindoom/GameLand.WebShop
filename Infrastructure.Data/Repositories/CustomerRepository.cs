@@ -49,8 +49,7 @@ namespace Infrastructure.Data.Repositories
 
         public Customer UpdateCustomer(Customer customerToUpdate)
         {
-            _ctx.Attach(customerToUpdate).State = EntityState.Modified;
-            _ctx.Entry(customerToUpdate).Reference(c => c.Orders).IsModified = true;
+            var uptade = _ctx.Customers.Update(customerToUpdate).Entity;
             _ctx.SaveChanges();
 
             return customerToUpdate;
