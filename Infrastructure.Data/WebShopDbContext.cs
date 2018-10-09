@@ -16,7 +16,7 @@ namespace Infrastructure.Data
                 .WithOne(o => o.Customer).OnDelete(DeleteBehavior.SetNull);
         }
         
-        public DbSet<Product> Product { get; set; }
+        public DbSet<Product> Products { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Order> Orders { get; set; }
     }
