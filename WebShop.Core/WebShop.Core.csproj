@@ -5,8 +5,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Domain" />
-      <Folder Include="Service" />
+      <ProjectReference Include="..\WebShop.Core.Entity\WebShop.Core.Entity.csproj" />
     </ItemGroup>
 
     <ItemGroup>
