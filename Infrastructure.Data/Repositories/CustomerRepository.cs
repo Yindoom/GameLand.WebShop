@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using WebShop.Core.Domain;
 using WebShop.Core.Entity;
@@ -24,17 +26,29 @@ namespace Infrastructure.Data.Repositories
 
         public Customer DeleteCustomer(int idCustomer)
         {
-            throw new NotImplementedException();
+            var customer2removeFromList = ReadCustomerByID(idCustomer);
+            var customer2remove = _ctx.Customers.Remove(customer2removeFromList).Entity;
+            _ctx.SaveChanges();
+            return customer2remove;
         }
 
-        public Customer ReadCustomer(int id)
+        public IEnumerable<Customer> ReadCustomer()
         {
-            throw new NotImplementedException();
+            return _ctx.Customers;
+        }
+
+        public Customer ReadCustomerByID(int id)
+        {
+            return _ctx.Customers.FirstOrDefault(c => c.Id == id);
         }
 
         public Customer UpdateCustomer(Customer customerToUpdate)
         {
-            throw new NotImplementedException();
+            _ctx.Attach(customerToUpdate).State = EntityState.Modified;
+            _ctx.Entry(customerToUpdate).Reference(c => c.Orders).IsModified = true;
+            _ctx.SaveChanges();
+
+            return customerToUpdate;
         }
     }
 }
