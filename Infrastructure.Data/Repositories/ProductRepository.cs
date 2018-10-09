@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using WebShop.Core.Domain;
+using WebShop.Core;
 using WebShop.Core.Entity;
 
 namespace Infrastructure.Data.Repositories
