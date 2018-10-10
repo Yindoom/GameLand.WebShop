@@ -17,17 +17,30 @@ namespace GameLand.WebShop
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             Configuration = configuration;
+            Environment = env;
         }
 
         public IConfiguration Configuration { get; }
+        public IHostingEnvironment Environment { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            if (Environment.IsDevelopment()){
+                // Sqlite database:
+                services.AddDbContext<WebShopDbContext>(
+                    opt => opt.UseSqlite("Data Source=WebShopDb"));
+            }
+            else
+            {
+                // Azure SQL database:
+                services.AddDbContext<WebShopDbContext>(opt =>
+                    opt.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
+                services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            }
 
             services.AddMvc().AddJsonOptions(options =>
             {
@@ -37,8 +50,8 @@ namespace GameLand.WebShop
                     ReferenceLoopHandling.Ignore;
             });
 
-            services.AddDbContext<WebShopDbContext>(
-                opt => opt.UseSqlite("Data Source=WebShopDb"));
+           /*services.AddDbContext<WebShopDbContext>(
+                opt => opt.UseSqlite("Data Source=WebShopDb"));*/
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IProductRepository, ProductRepository>();
  
