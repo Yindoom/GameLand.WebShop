@@ -24,7 +24,7 @@ namespace Infrastructure.Data.Repositories
                 _ctx.Attach(order.Customer);
             }
 
-            _ctx.Attach(order.Products);
+            _ctx.Attach(order.Product);
             var order2Add = _ctx.Orders.Add(order).Entity;
             _ctx.SaveChanges();
             return order2Add;
@@ -40,7 +40,7 @@ namespace Infrastructure.Data.Repositories
 
         public IEnumerable<Order> ReadOrder()
         {
-            return _ctx.Orders.Include(o => o.Products).Include(o => o.Customer);
+            return _ctx.Orders.Include(o => o.Product).Include(o => o.Customer);
         }
 
         public Order ReadOrderById(int id)

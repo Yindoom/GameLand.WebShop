@@ -11,7 +11,7 @@ namespace Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Order>().HasMany(o => o.Products);
+            modelBuilder.Entity<Order>().HasOne(o => o.Product);
             modelBuilder.Entity<Customer>().HasMany(c => c.Orders)
                 .WithOne(o => o.Customer).OnDelete(DeleteBehavior.SetNull);
         }

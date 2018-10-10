@@ -50,50 +50,41 @@ namespace Infrastructure.Data
                     Address = "Stormgade 6",
                     Email = "yindoom@hotmail.com",
                     Name = "Bastian",
-                    PreferredConsole = "PS4"
+                    PreferredConsole = "PS4",
+                    Password = "pass"
                 }).Entity;
                 var cust2 = ctx.Customers.Add(new Customer()
                 {
                     Address = "Stormgade 6",
                     Email = "fabio@hotmail.com",
                     Name = "Fabio",
-                    PreferredConsole = "PC"
+                    PreferredConsole = "PC",
+                    Password = "pass"
                 }).Entity;
                 var cust3 = ctx.Customers.Add(new Customer()
                 {
                     Address = "Stormgade 6",
                     Email = "hotboy@hotmail.com",
                     Name = "AHotBoy",
-                    PreferredConsole = "XBOX1"
+                    PreferredConsole = "XBOX1",
+                    Password = "pass"
                 }).Entity;
 
                 ctx.Orders.Add(new Order()
                 {
-                    Products = new List<Product>()
-                    {
-                        prod1,
-                        prod2
-                    },
+                    Product = prod1,
                     Customer = cust1,
                     Price = 1000,
                 });
                 ctx.Orders.Add(new Order()
                 {
-                    Products = new List<Product>()
-                    {
-                        prod2,
-                        prod3
-                    },
+                    Product = prod2,
                     Customer = cust2,
                     Price = 1000,
                 });
                 ctx.Orders.Add(new Order()
                 {
-                    Products = new List<Product>()
-                    {
-                        prod1,
-                        prod3
-                    },
+                    Product = prod3,
                     Customer = cust1,
                     Price = 1000,
                 });
