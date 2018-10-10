@@ -29,6 +29,7 @@ namespace GameLand.WebShop
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             if (Environment.IsDevelopment()){
                 // Sqlite database:
                 services.AddDbContext<WebShopDbContext>(
@@ -76,6 +77,7 @@ namespace GameLand.WebShop
                 app.UseHsts();
             }
 
+            app.UseCors(b => b.AllowAnyOrigin());
             app.UseHttpsRedirection();
             app.UseMvc();
         }
