@@ -70,7 +70,7 @@ namespace WebShop.Core.Services.Implementation
         public Product GetProductById(int id)
         {
             var prod = _productRepo.ReadById(id);
-            if (prod == null)
+            if (prod == null || id < 0)
             {
                 throw new InvalidDataException("Product does not exist.");
             }
