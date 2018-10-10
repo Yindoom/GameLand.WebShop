@@ -48,10 +48,10 @@ namespace Infrastructure.Data.Repositories
 
         public Order UpdateOrders(Order ordersToUpdate)
         {
-            var uptade = _ctx.Orders.Update(ordersToUpdate).Entity;
+            var update = _ctx.Orders.Update(ordersToUpdate).Entity;
             _ctx.SaveChanges();
 
-            return ordersToUpdate;
+            return update;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,42 +12,47 @@ namespace GameLand.WebShop.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private readonly IProductService _prodService;
+        private readonly IProductService _productService;
 
-        public ProductsController(IProductService prodService)
+        public ProductsController(IProductService productService)
         {
-            _prodService = prodService;
+            _productService = productService;
         }
-        // GET api/values
+
+        // GET api/products
         [HttpGet]
-        public ActionResult<List<Product>> Get()
+        public ActionResult<IEnumerable<Product>> Get()
         {
-            return _prodService.GetAllProducts();
+            return _productService.GetAllProducts();
         }
 
-        // GET api/values/5
+        // GET api/products/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult<Product> Get(int id)
         {
-            return "value";
+            return _productService.GetProductById(id);
         }
 
-        // POST api/values
+        // POST api/products
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult<Product> Post([FromBody] Product product)
         {
+            return _productService.CreateProduct(product);
+            
         }
 
-        // PUT api/values/5
+        // PUT api/products/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public ActionResult<Product> Put(int id, [FromBody] Product product)
         {
+            return _productService.UpdateProduct(id, product);
         }
 
-        // DELETE api/values/5
+        // DELETE api/products/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult<Product> Delete(int id)
         {
+            return _productService.DeleteProduct(id);
         }
     }
 }

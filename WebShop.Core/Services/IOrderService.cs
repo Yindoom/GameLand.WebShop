@@ -11,6 +11,6 @@ namespace WebShop.Core.Services
         List<Order> GetAllOrders();
         Order UpdateOrders(Order orderToUpdate);
         Order DeleteOrders(int idOrder);
-        List<Order> GetOrderById(int idOrder);
+        Order GetOrderById(int idOrder);
     }
 }

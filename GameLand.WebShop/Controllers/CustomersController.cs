@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,10 +10,10 @@ namespace GameLand.WebShop.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CustomerController : ControllerBase
+    public class CustomersController : ControllerBase
     {
         private readonly ICustomerService _customService;
-        public CustomerController(ICustomerService customService)
+        public CustomersController(ICustomerService customService)
         {
             _customService = customService;
         }

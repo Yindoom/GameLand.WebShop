@@ -81,7 +81,8 @@ namespace WebShop.Core.Services.Implementation
         {
             if (_productRepo.ReadById(id) != null)
             {
-                productToUpdate.Id = id;
+                var prod = _productRepo.ReadById(id);
+                prod = productToUpdate;
                 return _productRepo.UpdateProduct(productToUpdate);
             }
             else

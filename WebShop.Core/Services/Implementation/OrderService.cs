@@ -31,18 +31,14 @@ namespace WebShop.Core.Services.Implementation
             return _orderRepo.ReadOrder().ToList();
         }
 
-        public List<Order> GetOrderById(int idOrder)
+        public Order GetOrderById(int id)
         {
-            var list = _orderRepo.ReadOrder();
-            var order = list.Where(o => o.Id.Equals(idOrder));
-            return order.ToList();
+            return _orderRepo.ReadOrderById(id);
         }
 
         public Order UpdateOrders(Order orderToUpdate)
         {
-            var order = _orderRepo.ReadOrderById(orderToUpdate.Id);
-            order.Price = orderToUpdate.Price;
-            return order;
+            return _orderRepo.UpdateOrders(orderToUpdate);
         }
     }
 }

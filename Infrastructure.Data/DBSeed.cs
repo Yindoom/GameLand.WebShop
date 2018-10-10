@@ -11,8 +11,7 @@ namespace Infrastructure.Data
         public static void SeedDB(WebShopDbContext ctx)
         {
             ctx.Database.EnsureCreated();
-            if (!ctx.Products.Any() && !ctx.Customers.Any()
-                                    && !ctx.Orders.Any())
+            if (!ctx.Products.Any())
             {
                 ctx.Products.Add(new Product()
                 {
@@ -38,6 +37,10 @@ namespace Infrastructure.Data
                     Title = "Last of Us",
                     ReleaseDate = DateTime.Now
                 });
+            }
+
+            if (!ctx.Customers.Any())
+            {
                 ctx.Customers.Add(new Customer()
                 {
                     Address = "Stormgade 6",
@@ -59,38 +62,43 @@ namespace Infrastructure.Data
                     Name = "AHotBoy",
                     PreferredConsole = "XBOX69"
                 });
-               /* ctx.Orders.Add(new Order()
-                {
-                    products = new List<Product>()
-                    {
-                        new Product() {Id = 0},
-                        new Product() {Id = 1}
-                    },
-                    customer = new Customer() {Id = 0},
-                    Price = 1000,
-                });
-                ctx.Orders.Add(new Order()
-                {
-                    products = new List<Product>()
-                    {
-                        new Product() {Id = 0},
-                        new Product() {Id = 2}
-                    },
-                    customer = new Customer() {Id = 1},
-                    Price = 1000,
-                });
-                ctx.Orders.Add(new Order()
-                {
-                    products = new List<Product>()
-                    {
-                        new Product() {Id = 2},
-                        new Product() {Id = 1}
-                    },
-                    customer = new Customer() {Id = 2},
-                    Price = 1000,
-                });*/
+            }
+
+            /*
+             if(!ctx.Orders.Any())
+             {
+             ctx.Orders.Add(new Order()
+             {
+                 products = new List<Product>()
+                 {
+                     new Product() {Id = 0},
+                     new Product() {Id = 1}
+                 },
+                 customer = new Customer() {Id = 0},
+                 Price = 1000,
+             });
+             ctx.Orders.Add(new Order()
+             {
+                 products = new List<Product>()
+                 {
+                     new Product() {Id = 0},
+                     new Product() {Id = 2}
+                 },
+                 customer = new Customer() {Id = 1},
+                 Price = 1000,
+             });
+             ctx.Orders.Add(new Order()
+             {
+                 products = new List<Product>()
+                 {
+                     new Product() {Id = 2},
+                     new Product() {Id = 1}
+                 },
+                 customer = new Customer() {Id = 2},
+                 Price = 1000,
+             });
+             }*/
                 ctx.SaveChanges();
             }
         }
     }
-}

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,12 +11,12 @@ namespace GameLand.WebShop.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class OrderController : ControllerBase
+    public class OrdersController : ControllerBase
     {
         private readonly IOrderService _orderService;
-        public OrderController(IOrderService _orderService)
+        public OrdersController(IOrderService orderService)
         {
-            this._orderService = _orderService;
+            _orderService = orderService;
         }
 
         // GET api/orders
@@ -28,7 +28,7 @@ namespace GameLand.WebShop.Controllers
 
         // GET api/orders/5
         [HttpGet("{id}")]
-        public ActionResult<IEnumerable<Order>> Get(int id)
+        public ActionResult<Order> Get(int id)
         {
             return _orderService.GetOrderById(id);
         }
