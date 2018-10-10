@@ -20,15 +20,16 @@ namespace WebShop.Core.Services.Implementation
 
         public Customer CreateCustomer(Customer customer)
         {
-            if (customer.Name == null)
+            
+            if (string.IsNullOrEmpty(customer.Name))
             {
                 throw new ArgumentException("Name can not be empty.");
             }
-            else if (customer.Email == null || customer.PhoneNumber.Equals(""))
+            else if (string.IsNullOrEmpty(customer.Email) && customer.PhoneNumber == 0 || customer.PhoneNumber.ToString().Length < 9)
             {
-                throw new ArgumentException("A way to contact the user is a must.");
+                throw new ArgumentException("A valid way to contact the user is a must.");
             }
-            else if (customer.PreferredConsole != "PC" || customer.PreferredConsole != "PS4" || customer.PreferredConsole != "XBOX1")
+            else if (!customer.PreferredConsole.Equals("PC") && !customer.PreferredConsole.Equals("PS4") && !customer.PreferredConsole.Equals("XBOX1"))
             {
                 throw new ArgumentException("We do not support this console yet at the store.");
             }
