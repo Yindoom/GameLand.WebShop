@@ -77,18 +77,10 @@ namespace WebShop.Core.Services.Implementation
                 return _productRepo.ReadById(id);
         }
 
-        public Product UpdateProduct(int id, Product productToUpdate)
+        public Product UpdateProduct(int id, Product updateProd)
         {
-            if (_productRepo.ReadById(id) != null)
-            {
-                var prod = _productRepo.ReadById(id);
-                prod = productToUpdate;
-                return _productRepo.UpdateProduct(productToUpdate);
-            }
-            else
-            {
-                throw new InvalidDataException("Product Id does not exist.");
-            }
+            updateProd.Id = id;
+            return _productRepo.UpdateProduct(updateProd);
         }
     }
 }

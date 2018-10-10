@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using WebShop.Core.Domain;
 using WebShop.Core.Service;
+using WebShop.Core.Services;
 using WebShop.Core.Services.Implementation;
 
 namespace GameLand.WebShop
@@ -42,8 +43,10 @@ namespace GameLand.WebShop
             services.AddScoped<IProductRepository, ProductRepository>();
  
             services.AddScoped<ICustomerRepository, CustomerRepository>();
-            services.AddScoped<ICustomerService, CustomerService>(); 
-            
+            services.AddScoped<ICustomerService, CustomerService>();
+
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
             
             services.BuildServiceProvider();
         }

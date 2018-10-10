@@ -27,7 +27,7 @@ namespace GameLand.WebShop.Controllers
 
         // GET api/customers/5
         [HttpGet("{id}")]
-        public ActionResult<IEnumerable<Customer>> Get(int id)
+        public ActionResult<Customer> Get(int id)
         {
             return _customService.GetCustomerById(id);
         }
@@ -43,7 +43,7 @@ namespace GameLand.WebShop.Controllers
         [HttpPut("{id}")]
         public ActionResult<Customer> Put(int id, [FromBody] Customer customer)
         {
-            return _customService.UpdateCustomer(customer);
+            return _customService.UpdateCustomer(id, customer);
         }
 
         // DELETE api/customers/5
