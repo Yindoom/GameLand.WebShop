@@ -18,11 +18,19 @@ namespace WebShop.Core.Services.Implementation
         }
         public Order CreateOrders(Order order)
         {
+            if (order.Customer != null)
+            {
             return _orderRepo.CreateOrder(order);
+            }
+            throw new ArgumentException("Order must be attached to some customer");
         }
 
         public Order DeleteOrders(int idOrder)
         {
+            if (idOrder <= 0)
+            {
+                throw new ArgumentException("The order you try to delete is not available");
+            }
             return _orderRepo.DeleteOrders(idOrder);
         }
 
@@ -33,6 +41,10 @@ namespace WebShop.Core.Services.Implementation
 
         public Order GetOrderById(int id)
         {
+            if (id <= 0)
+            {
+                throw new ArgumentException("The order you try to get is not available");
+            }
             return _orderRepo.ReadOrderById(id);
         }
 

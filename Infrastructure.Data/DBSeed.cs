@@ -10,7 +10,9 @@ namespace Infrastructure.Data
     {
         public static void SeedDB(WebShopDbContext ctx)
         {
+            ctx.Database.EnsureDeleted();
             ctx.Database.EnsureCreated();
+            
             if (!ctx.Products.Any())
             {
                 ctx.Products.Add(new Product()
@@ -46,6 +48,8 @@ namespace Infrastructure.Data
                     Address = "Stormgade 6",
                     Email = "yindoom@hotmail.com",
                     Name = "Bastian",
+                    LastName = "Bønkel",
+                    PhoneNumber = 2394234,
                     PreferredConsole = "PS4"
                 });
                 ctx.Customers.Add(new Customer()
@@ -53,6 +57,7 @@ namespace Infrastructure.Data
                     Address = "Stormgade 6",
                     Email = "fabio@hotmail.com",
                     Name = "Fabio",
+                    LastName = "PortugueseLastName",
                     PreferredConsole = "PC"
                 });
                 ctx.Customers.Add(new Customer()
@@ -60,6 +65,7 @@ namespace Infrastructure.Data
                     Address = "Stormgade 6",
                     Email = "hotboy@hotmail.com",
                     Name = "AHotBoy",
+                    LastName = "HostLastName",
                     PreferredConsole = "XBOX69"
                 });
             }
