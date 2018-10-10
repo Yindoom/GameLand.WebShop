@@ -21,7 +21,8 @@ namespace Infrastructure.Data
                     Console = "PS4",
                     Title = "Spooperman",
                     ReleaseDate = DateTime.Now,
-                    Image = "https://i.imgur.com/adgPb5G.png"
+                    Image = "https://i.imgur.com/adgPb5G.png",
+                    Description = "Play as Spooderbabe in this new game about the wall crawling piece of shit"
                 }).Entity;
                var prod2 = ctx.Products.Add(new Product()
                 {
@@ -30,7 +31,8 @@ namespace Infrastructure.Data
                     Console = "PS4",
                     Title = "God Of War",
                     ReleaseDate = DateTime.Now,
-                    Image = "https://i.imgur.com/Jll6NYX.jpg"
+                    Image = "https://i.imgur.com/Jll6NYX.jpg",
+                    Description = "God Of War is back with a vengeance in this cashgrab mobile game ported to PS5"
                 }).Entity;
                 var prod3 = ctx.Products.Add(new Product()
                 {
@@ -39,7 +41,8 @@ namespace Infrastructure.Data
                     Console = "PS4",
                     Title = "Last of Us",
                     ReleaseDate = DateTime.Now,
-                    Image = "https://i.imgur.com/NhQjtMr.jpg"
+                    Image = "https://i.imgur.com/NhQjtMr.jpg",
+                    Description = "This game is garbage don't get it"
                 }).Entity;
 
                 var cust1 = ctx.Customers.Add(new Customer()
