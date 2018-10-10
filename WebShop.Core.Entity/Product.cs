@@ -12,5 +12,6 @@ namespace WebShop.Core.Entity
         public DateTime ReleaseDate { get; set; }
         public string Console { get; set; }
         public string Image { get; set; }
+        public string Description { get; set; }
     }
 }

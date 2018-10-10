@@ -7,7 +7,7 @@ namespace WebShop.Core.Entity
     {
         public int Id { get; set; }
         public Customer Customer { get; set; }
-        public List<Product> Products { get; set; }
+        public Product Product { get; set; }
         public double Price { get; set; }
     }
 }
