@@ -20,12 +20,12 @@ namespace WebShop.Core.Services.Implementation
 
         public Customer CreateCustomer(Customer customer)
         {
-            
+
             if (string.IsNullOrEmpty(customer.Name))
             {
                 throw new ArgumentException("Name can not be empty.");
             }
-            else if (string.IsNullOrEmpty(customer.Email) && customer.PhoneNumber == 0 || customer.PhoneNumber.ToString().Length < 9)
+            else if (string.IsNullOrEmpty(customer.Email))
             {
                 throw new ArgumentException("A valid way to contact the user is a must.");
             }
@@ -33,6 +33,15 @@ namespace WebShop.Core.Services.Implementation
             {
                 throw new ArgumentException("We do not support this console yet at the store.");
             }
+            else if (string.IsNullOrEmpty(customer.Password) || !customer.Password.Any(char.IsDigit))
+            {
+                throw new ArgumentException("Password not secure enough, try add at least one number");
+            }
+            else if (customer.Password.Length < 4 || customer.Password.Length > 16)
+            {
+                throw new ArgumentException("Password must be between 4 and 15 digits.");
+            }
+
             return _customRepo.CreateCustomer(customer);
         }
 
@@ -51,11 +60,11 @@ namespace WebShop.Core.Services.Implementation
         }
 
         public Customer GetCustomerById(int idCustomer)
-        { 
+        {
             if (idCustomer > 0)
             {
                 return _customRepo.ReadCustomerByID(idCustomer);
-       
+
             }
             throw new ArgumentException("The ID you try to get is not available.");
 
