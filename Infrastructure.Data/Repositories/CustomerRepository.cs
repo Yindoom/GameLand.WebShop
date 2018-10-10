@@ -45,10 +45,10 @@ namespace Infrastructure.Data.Repositories
 
         public Customer UpdateCustomer(Customer customerToUpdate)
         {
-            var uptade = _ctx.Customers.Update(customerToUpdate).Entity;
+            var update = _ctx.Customers.Update(customerToUpdate).Entity;
             _ctx.SaveChanges();
 
-            return customerToUpdate;
+            return update;
         }
     }
 }

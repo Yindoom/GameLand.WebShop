@@ -50,25 +50,20 @@ namespace WebShop.Core.Services.Implementation
         }
 
         public Customer GetCustomerById(int idCustomer)
-        {
-
+        { 
             if (idCustomer > 0)
             {
-                var customer = _customRepo.ReadCustomerByID(idCustomer);
-                return customer;
+                return _customRepo.ReadCustomerByID(idCustomer);
+       
             }
             throw new ArgumentException("The ID you try to get is not available.");
+
         }
 
-        public Customer UpdateCustomer(Customer customerToUpdate)
+        public Customer UpdateCustomer(int id, Customer customerToUpdate)
         {
-            var customer = _customRepo.ReadCustomerByID(customerToUpdate.Id);
-            customer.Name = customerToUpdate.Name;
-            customer.Email = customerToUpdate.Email;
-            customer.Address = customerToUpdate.Address;
-            customer.PreferredConsole = customerToUpdate.PreferredConsole;
-            customer.Orders = customerToUpdate.Orders;
-            return customer;
+            customerToUpdate.Id = id;
+            return _customRepo.UpdateCustomer(customerToUpdate);
         }
     }
 }

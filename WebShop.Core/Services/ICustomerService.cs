@@ -9,7 +9,7 @@ namespace WebShop.Core.Service
     {
         Customer CreateCustomer(Customer customer);
         List<Customer> GetAllCustomers();
-        Customer UpdateCustomer(Customer customerToUpdate);
+        Customer UpdateCustomer(int id, Customer customerToUpdate);
         Customer DeleteCustomer(int idCustomer);
         Customer GetCustomerById(int idCustomer);
 

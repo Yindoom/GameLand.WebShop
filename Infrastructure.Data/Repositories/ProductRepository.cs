@@ -48,7 +48,7 @@ namespace Infrastructure.Data.Repositories
 
         public Product UpdateProduct(Product productToUpdate)
         {
-            var updated = _ctx.Update(productToUpdate).Entity;
+            var updated = _ctx.Products.Update(productToUpdate).Entity;
             _ctx.SaveChanges();
             return updated;
         }

@@ -10,40 +10,39 @@ namespace Infrastructure.Data
     {
         public static void SeedDB(WebShopDbContext ctx)
         {
-            ctx.Database.EnsureDeleted();
+            //ctx.Database.EnsureDeleted();
             ctx.Database.EnsureCreated();
-            
-            if (!ctx.Products.Any())
+            if (!ctx.Products.Any() && !ctx.Customers.Any() && !ctx.Orders.Any())
             {
-                ctx.Products.Add(new Product()
+                var prod1 = ctx.Products.Add(new Product()
                 {
                     Stock = 5,
                     Price = 500,
                     Console = "PS4",
                     Title = "Spooperman",
-                    ReleaseDate = DateTime.Now
-                });
-                ctx.Products.Add(new Product()
+                    ReleaseDate = DateTime.Now,
+                    Image = "https://i.imgur.com/adgPb5G.png"
+                }).Entity;
+               var prod2 = ctx.Products.Add(new Product()
                 {
                     Stock = 5,
                     Price = 500,
                     Console = "PS4",
                     Title = "God Of War",
-                    ReleaseDate = DateTime.Now
-                });
-                ctx.Products.Add(new Product()
+                    ReleaseDate = DateTime.Now,
+                    Image = "https://i.imgur.com/Jll6NYX.jpg"
+                }).Entity;
+                var prod3 = ctx.Products.Add(new Product()
                 {
                     Stock = 5,
                     Price = 500,
                     Console = "PS4",
                     Title = "Last of Us",
-                    ReleaseDate = DateTime.Now
-                });
-            }
+                    ReleaseDate = DateTime.Now,
+                    Image = "https://i.imgur.com/NhQjtMr.jpg"
+                }).Entity;
 
-            if (!ctx.Customers.Any())
-            {
-                ctx.Customers.Add(new Customer()
+                var cust1 = ctx.Customers.Add(new Customer()
                 {
                     Address = "Stormgade 6",
                     Email = "yindoom@hotmail.com",
@@ -51,60 +50,59 @@ namespace Infrastructure.Data
                     LastName = "Bønkel",
                     PhoneNumber = 2394234,
                     PreferredConsole = "PS4"
-                });
-                ctx.Customers.Add(new Customer()
+                }).Entity;
+                var cust2 = ctx.Customers.Add(new Customer()
                 {
                     Address = "Stormgade 6",
                     Email = "fabio@hotmail.com",
                     Name = "Fabio",
                     LastName = "PortugueseLastName",
                     PreferredConsole = "PC"
-                });
-                ctx.Customers.Add(new Customer()
+                }).Entity;
+                var cust3 = ctx.Customers.Add(new Customer()
                 {
                     Address = "Stormgade 6",
                     Email = "hotboy@hotmail.com",
                     Name = "AHotBoy",
                     LastName = "HostLastName",
                     PreferredConsole = "XBOX69"
-                });
-            }
+                }).Entity;
+            
 
-            /*
-             if(!ctx.Orders.Any())
-             {
-             ctx.Orders.Add(new Order()
-             {
-                 products = new List<Product>()
-                 {
-                     new Product() {Id = 0},
-                     new Product() {Id = 1}
-                 },
-                 customer = new Customer() {Id = 0},
-                 Price = 1000,
-             });
-             ctx.Orders.Add(new Order()
-             {
-                 products = new List<Product>()
-                 {
-                     new Product() {Id = 0},
-                     new Product() {Id = 2}
-                 },
-                 customer = new Customer() {Id = 1},
-                 Price = 1000,
-             });
-             ctx.Orders.Add(new Order()
-             {
-                 products = new List<Product>()
-                 {
-                     new Product() {Id = 2},
-                     new Product() {Id = 1}
-                 },
-                 customer = new Customer() {Id = 2},
-                 Price = 1000,
-             });
-             }*/
+                ctx.Orders.Add(new Order()
+                {
+                    Products = new List<Product>()
+                    {
+                        prod1,
+                        prod2
+                    },
+                    Customer = cust1,
+                    Price = 1000,
+                });
+                ctx.Orders.Add(new Order()
+                {
+                    Products = new List<Product>()
+                    {
+                        prod2,
+                        prod3
+                    },
+                    Customer = cust2,
+                    Price = 1000,
+                });
+                ctx.Orders.Add(new Order()
+                {
+                    Products = new List<Product>()
+                    {
+                        prod1,
+                        prod3
+                    },
+                    Customer = cust1,
+                    Price = 1000,
+                });
                 ctx.SaveChanges();
             }
+
+
         }
     }
+}
