@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Remotion.Linq.Clauses;
 using WebShop.Core;
 using WebShop.Core.Domain;
 using WebShop.Core.Entity;
