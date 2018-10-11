@@ -35,7 +35,7 @@ namespace Infrastructure.Data.Repositories
 
         public IEnumerable<Customer> ReadCustomer()
         {
-            return _ctx.Customers.Include(c => c.Orders);
+            return _ctx.Customers;
         }
 
         public Customer ReadCustomerByID(int id)
