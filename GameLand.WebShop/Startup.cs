@@ -32,7 +32,7 @@ namespace GameLand.WebShop
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowSpecificOrigin",
-                    builder => builder.WithOrigins("http://localhost:44929").AllowAnyHeader()
+                    builder => builder.WithOrigins("https://gameland-webshop.azurewebsites.net").AllowAnyHeader()
                         .AllowAnyMethod());
             });
             if (Environment.IsDevelopment()){
