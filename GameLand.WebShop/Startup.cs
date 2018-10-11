@@ -77,7 +77,7 @@ namespace GameLand.WebShop
                 app.UseHsts();
             }
 
-            app.UseCors(b => b.AllowAnyOrigin());
+            app.UseCors(b => b.AllowAnyOrigin().AllowAnyMethod());
             app.UseHttpsRedirection();
             app.UseMvc();
         }
