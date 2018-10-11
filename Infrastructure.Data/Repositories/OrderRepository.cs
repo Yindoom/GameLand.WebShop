@@ -40,7 +40,7 @@ namespace Infrastructure.Data.Repositories
 
         public IEnumerable<Order> ReadOrder()
         {
-            return _ctx.Orders.Include(o => o.Product).Include(o => o.Customer);
+            return _ctx.Orders;
         }
 
         public Order ReadOrderById(int id)
