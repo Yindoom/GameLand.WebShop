@@ -29,12 +29,7 @@ namespace GameLand.WebShop
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(options =>
-            {
-                options.AddPolicy("AllowSpecificOrigin",
-                    builder => builder.WithOrigins("https://gameland-webshop.azurewebsites.net").AllowAnyHeader()
-                        .AllowAnyMethod());
-            });
+            services.AddCors();
             if (Environment.IsDevelopment()){
                 // Sqlite database:
                 services.AddDbContext<WebShopDbContext>(
@@ -82,7 +77,8 @@ namespace GameLand.WebShop
                 app.UseHsts();
             }
 
-            app.UseCors("AllowSpecificOrigin");
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod());
+            //app.UseCors("AllowSpecificOrigin");
             app.UseHttpsRedirection();
             app.UseMvc();
         }
