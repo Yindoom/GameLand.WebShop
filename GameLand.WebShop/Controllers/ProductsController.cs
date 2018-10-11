@@ -21,9 +21,9 @@ namespace GameLand.WebShop.Controllers
 
         // GET api/products
         [HttpGet]
-        public ActionResult<IEnumerable<Product>> Get()
+        public ActionResult<IEnumerable<Product>> Get([FromQuery] Filter filter)
         {
-            return _productService.GetAllProducts();
+            return _productService.GetAllProducts(filter);
         }
 
         // GET api/products/5
@@ -38,7 +38,7 @@ namespace GameLand.WebShop.Controllers
         public ActionResult<Product> Post([FromBody] Product product)
         {
             return _productService.CreateProduct(product);
-            
+
         }
 
         // PUT api/products/5
@@ -52,7 +52,14 @@ namespace GameLand.WebShop.Controllers
         [HttpDelete("{id}")]
         public ActionResult<Product> Delete(int id)
         {
-            return _productService.DeleteProduct(id);
+            try
+            {
+                return Ok(_productService.DeleteProduct(id));
+            }
+            catch (InvalidOperationException e)
+            {
+                return StatusCode(404, e.Message);
+            }
         }
     }
 }

@@ -62,9 +62,9 @@ namespace WebShop.Core.Services.Implementation
             return _productRepo.DeleteProduct(deleted);
         }
 
-        public List<Product> GetAllProducts()
+        public List<Product> GetAllProducts(Filter filter)
         {
-            return _productRepo.ReadProducts().ToList();
+            return _productRepo.ReadProducts(filter).ToList();
         }
 
         public Product GetProductById(int id)

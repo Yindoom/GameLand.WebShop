@@ -10,7 +10,7 @@ namespace Infrastructure.Data
     {
         public static void SeedDB(WebShopDbContext ctx)
         {
-            //ctx.Database.EnsureDeleted();
+           // ctx.Database.EnsureDeleted();
             ctx.Database.EnsureCreated();
             if (!ctx.Products.Any() && !ctx.Customers.Any() && !ctx.Orders.Any())
             {

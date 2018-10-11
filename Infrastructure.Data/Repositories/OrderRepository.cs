@@ -48,6 +48,16 @@ namespace Infrastructure.Data.Repositories
             return _ctx.Orders.FirstOrDefault(o => o.Id == id);
         }
 
+        public void DeleteAllProductOrders(Product delProduct)
+        {
+            foreach (var order in _ctx.Orders.Where(o => o.Product.Id == delProduct.Id))
+            {
+                order.Product = null;
+                _ctx.Update(order);
+            }
+            _ctx.SaveChanges();
+        }
+
         public Order UpdateOrders(Order ordersToUpdate)
         {
             var update = _ctx.Orders.Update(ordersToUpdate).Entity;

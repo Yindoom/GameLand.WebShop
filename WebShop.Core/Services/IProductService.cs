@@ -8,7 +8,7 @@ namespace WebShop.Core.Service
     public interface IProductService
     {
         Product CreateProduct (Product product);
-        List<Product> GetAllProducts();
+        List<Product> GetAllProducts(Filter filter);
         Product GetProductById(int id);
         Product UpdateProduct(int id, Product productToUpdate);
         Product SellOneProduct(int i);

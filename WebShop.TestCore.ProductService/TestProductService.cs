@@ -17,15 +17,16 @@ namespace WebShop.TestCore.ProductService
         [Fact]
         public void TestInitSize()
         {
+            Filter filter = null;
             var service = new Core.Services.Implementation.ProductService(new TestProdRepo());
-            Assert.True(service.GetAllProducts().Count == 0);
+            Assert.True(service.GetAllProducts(filter).Count == 0);
         }
         
         [Fact]
         public void AddProduct()
-        {
+        {Filter filter = null;
             var service = new Core.Services.Implementation.ProductService(new TestProdRepo());
-            Assert.True(service.GetAllProducts().Count == 0);
+            Assert.True(service.GetAllProducts(filter).Count == 0);
             var prod1 = new Product()
             {
                 Id = 0,
@@ -42,8 +43,9 @@ namespace WebShop.TestCore.ProductService
         [Fact]
         public void TestDelete()
         {
+            Filter filter = null;
             var service = new Core.Services.Implementation.ProductService(new TestProdRepo());
-            Assert.True(service.GetAllProducts().Count == 0);
+            Assert.True(service.GetAllProducts(filter).Count == 0);
             var prod1 = new Product()
             {
                 Id = 0,
@@ -56,14 +58,15 @@ namespace WebShop.TestCore.ProductService
             service.CreateProduct(prod1);
             Assert.True(service.GetProductById(0) == prod1);
             service.DeleteProduct(0);
-            Assert.True(service.GetAllProducts().Count == 0);
+            Assert.True(service.GetAllProducts(filter).Count == 0);
         }
 
         [Fact]
         public void TestSell()
         {
+            Filter filter = null;
             var service = new Core.Services.Implementation.ProductService(new TestProdRepo());
-            Assert.True(service.GetAllProducts().Count == 0);
+            Assert.True(service.GetAllProducts(filter).Count == 0);
             var prod1 = new Product()
             {
                 Id = 0,
@@ -81,8 +84,9 @@ namespace WebShop.TestCore.ProductService
         [Fact]
         public void TestBuy()
         {
+            Filter filter = null;
             var service = new Core.Services.Implementation.ProductService(new TestProdRepo());
-            Assert.True(service.GetAllProducts().Count == 0);
+            Assert.True(service.GetAllProducts(filter).Count == 0);
             var prod1 = new Product()
             {
                 Id = 0,
@@ -100,8 +104,9 @@ namespace WebShop.TestCore.ProductService
         [Fact]
         public void TestAddProductWithNoName()
         {
+            Filter filter = null;
             var service = new Core.Services.Implementation.ProductService(new TestProdRepo());
-            Assert.True(service.GetAllProducts().Count == 0);
+            Assert.True(service.GetAllProducts(filter).Count == 0);
             var prod1 = new Product()
             {
                 Id = 0,
@@ -118,8 +123,9 @@ namespace WebShop.TestCore.ProductService
         [Fact]
         public void TestAddProductWithNoConsole()
         {
+            Filter filter = null;
             var service = new Core.Services.Implementation.ProductService(new TestProdRepo());
-            Assert.True(service.GetAllProducts().Count == 0);
+            Assert.True(service.GetAllProducts(filter).Count == 0);
             var prod1 = new Product()
             {
                 Id = 0,
@@ -136,8 +142,9 @@ namespace WebShop.TestCore.ProductService
         [Fact]
         public void TestAddProductWithNoStock()
         {
+            Filter filter = null;
             var service = new Core.Services.Implementation.ProductService(new TestProdRepo());
-            Assert.True(service.GetAllProducts().Count == 0);
+            Assert.True(service.GetAllProducts(filter).Count == 0);
             var prod1 = new Product()
             {
                 Id = 0,
@@ -154,7 +161,7 @@ namespace WebShop.TestCore.ProductService
         public void TestAddProductWithNoPrice()
         {
             var service = new Core.Services.Implementation.ProductService(new TestProdRepo());
-            Assert.True(service.GetAllProducts().Count == 0);
+            Assert.True(service.GetAllProducts(null).Count == 0);
             var prod1 = new Product()
             {
                 Id = 0,
@@ -171,7 +178,7 @@ namespace WebShop.TestCore.ProductService
         public void TestAddProductWithNegativePrice()
         {
             var service = new Core.Services.Implementation.ProductService(new TestProdRepo());
-            Assert.True(service.GetAllProducts().Count == 0);
+            Assert.True(service.GetAllProducts(null).Count == 0);
             var prod1 = new Product()
             {
                 Id = 0,
@@ -189,7 +196,7 @@ namespace WebShop.TestCore.ProductService
         public void TestAddProductWithNoRelease()
         {
             var service = new Core.Services.Implementation.ProductService(new TestProdRepo());
-            Assert.True(service.GetAllProducts().Count == 0);
+            Assert.True(service.GetAllProducts(null).Count == 0);
             var prod1 = new Product()
             {
                 Id = 0,
@@ -207,7 +214,7 @@ namespace WebShop.TestCore.ProductService
         public void TestUpdateProductWithWrongId()
         {
             var service = new Core.Services.Implementation.ProductService(new TestProdRepo());
-            Assert.True(service.GetAllProducts().Count == 0);
+            Assert.True(service.GetAllProducts(null).Count == 0);
             var prod1 = new Product()
             {
                 Id = 0,

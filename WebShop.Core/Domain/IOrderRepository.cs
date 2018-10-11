@@ -12,5 +12,6 @@ namespace WebShop.Core.Domain
         Order UpdateOrders(Order ordersToUpdate);
         Order DeleteOrders(int idOrders);
         Order ReadOrderById(int id);
+        void  DeleteAllProductOrders(Product delProduct);
     }
 }

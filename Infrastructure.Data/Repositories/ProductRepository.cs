@@ -12,10 +12,12 @@ namespace Infrastructure.Data.Repositories
     public class ProductRepository : IProductRepository
     {
         private readonly WebShopDbContext _ctx;
+        private readonly IOrderRepository _orderRepository;
 
-        public ProductRepository(WebShopDbContext ctx)
+        public ProductRepository(WebShopDbContext ctx, IOrderRepository orderRepository)
         {
             _ctx = ctx;
+            _orderRepository = orderRepository;
         }
         public Product CreateProduct(Product product)
         {
@@ -26,6 +28,7 @@ namespace Infrastructure.Data.Repositories
 
         public Product DeleteProduct(Product delProduct)
         {
+            _orderRepository.DeleteAllProductOrders(delProduct);
             var deleted = _ctx.Products.Remove(delProduct).Entity;
             _ctx.SaveChanges();
             return deleted;
@@ -33,12 +36,12 @@ namespace Infrastructure.Data.Repositories
 
         public IEnumerable<Product> ReadProducts(Filter filter)
         {
-            if (filter == null)
+            if (filter.CurrentPage>=1 || filter.ItemsPrPage>=1)
             {
-                return _ctx.Products;
+                return _ctx.Products.Skip(filter.CurrentPage - 1 * filter.ItemsPrPage).Take(filter.ItemsPrPage);
             }
 
-            return _ctx.Products.Skip(filter.CurrentPage - 1 * filter.ItemsPrPage);
+            return _ctx.Products;
         }
 
         public Product ReadById(int id)
